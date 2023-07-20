@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const express=require('express')
 const app=express();
 const methodOverride=require('method-override')
@@ -9,6 +9,15 @@ const Register=require('./models/register')
 const catchAsync=require('./utilities/catchAsync')
 const expresserror=require('./utilities/expresserror')
 const joi=require('joi')
+const PORT=process.env.PORT||2000
+mongoose.set('strictQuery', true);
+mongoose.connect(process.env.DA)//
+.then(()=>{
+    console.log("MONOGO Connection opened")
+})
+.catch(()=>{
+    console.log("Oh no ! Error occured")
+})
 
 const registerSchema=joi.object({
     email:joi.string().email().lowercase().required(),
@@ -26,14 +35,7 @@ app.use('/public', express.static('public'));
 app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
 
-mongoose.set('strictQuery', true);
-mongoose.connect('mongodb+srv://singh:lbxITKPUhOWb1UpA@cluster2.ekvdqqp.mongodb.net/?retryWrites=true&w=majority')//'mongodb://127.0.0.1:27017/Notes'
-.then(()=>{
-    console.log("MONOGO Connection opened")
-})
-.catch(()=>{
-    console.log("Oh no ! Error occured")
-})
+
 app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine','ejs')
 
@@ -148,6 +150,6 @@ app.use((err,req,res,next)=>{
 })
 
 
-app.listen(2000,()=>{
+app.listen(PORT,()=>{
     console.log("listening")
 })
