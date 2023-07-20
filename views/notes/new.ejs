@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href= "/public/assets/style2.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Cherry+Bomb+One&family=Fasthand&display=swap" rel="stylesheet">
+    <title>New Notes</title>
+</head>
+<body>
+    <form action="/user/<%=userid%>/notes" method="post">
+    <h1>Add a new note <a href="/user/<%=userid%>/notes">Home</a></h1>
+
+      <label for="title"></label>
+        <input type="text" name="title" placeholder="Title of note" id="title"required> <button  id="submit">Submit</button><br>
+        <label for="category"></label>
+        <input type="text" name="category" id="category" placeholder="Enter Category"required>  
+        <label for="reset"></label>
+        <input type="reset" id="reset" value="Clear"><br>
+        
+        <h2>Enter text below:</h2>
+        <textarea  name="description" id="description" rows="25" cols="250" >&nbsp;
+        </textarea>
+    </form>
+   
+
+</body>
+</html>

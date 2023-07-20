@@ -1,0 +1,10 @@
+body{
+    background-color: rgb(221, 122, 122);
+}
+.div1{
+  display: block;
+  margin: 20%;
+        text-align: center;
+        border: 10px solid rgb(15, 16, 15);
+      
+}

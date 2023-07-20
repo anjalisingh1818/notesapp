@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href= "/public/assets/style2.css" rel="stylesheet" type="text/css" />
+    <style>
+        body,h1{
+            background: linear-gradient(100deg,green,beige);
+        }
+        a,#reset,#cancel,#submit{
+            background-color:rgba(67, 198, 67, 0.685);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Cherry+Bomb+One&family=Fasthand&display=swap" rel="stylesheet">
+    <title>Edit Notes</title>
+</head>
+<body>
+   
+    <form action="/user/<%=id%>/notes/<%=editnotes._id%>?_method=PUT" method="post">
+        <h1 id="head">Edit Notes:  <%=editnotes.title%> <a href="/user/<%=id%>/notes">Home</a></h1>
+  
+        <input type="text" name="title" id="title" value="<%=editnotes.title%>"required> <button  id="submit" >submit</button><br>
+     
+        <input type="text" name="desc" id="category" value="<%=editnotes.category%>" required>
+       
+        <a href="/user/<%=id %>/notes/<%=editnotes._id%>" id="cancel">Cancel</a>
+        <br><br>
+      <h2>Descption of note:</h2>
+          <textarea  name="description" id="description" rows="25" cols="250" >&nbsp;<%=editnotes.description%>
+          </textarea>
+
+</form>
+
+  
+</body>
+</html>

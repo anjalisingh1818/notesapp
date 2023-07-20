@@ -1,0 +1,59 @@
+body{
+    background: linear-gradient(90deg,rgb(236, 113, 60),rgba(128, 17, 136, 0.352));
+    font-size: 20px;
+    font-family: 'Aoboshi One', serif;
+    text-transform:capitalize ;
+}
+li{
+    list-style: none;
+}
+#home,#edit,#delete{
+    margin-left: 10px;
+    border:none;
+    outline: none;
+    text-decoration: none;
+    color: rgb(255, 253, 253);
+    padding: 8px;
+    border-radius: 5px;
+   background-color:rgba(78, 5, 83, 0.352);
+   cursor: pointer;
+}
+#delete{
+    margin-left: -10px;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+textarea{
+    width: 100%;
+    line-height: 31px;
+    background-image: -webkit-linear-gradient(left, white 0, transparent 0), -webkit-linear-gradient(right, white 0, transparent 0), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+    background-repeat: repeat-y;
+    background-size: 100% 100%, 100% 100%, 100% 31px;
+    background-attachment: local;
+    max-width: 100%;
+    outline: none;
+}
+h1,h2{
+    margin: 20px;
+    display:flex;
+    padding: 5px ;
+    font-size: 25px;
+    align-items:center;
+    background:rgba(98, 5, 104, 0.352);
+    color:white;
+   justify-content:space-between;
+    border-radius:5px;
+    outline: none;
+}
+a{
+    text-decoration: none;
+    color: rgb(247, 247, 243);
+  
+}
+#stitle{
+
+    display: flex;
+    justify-content:space-around;
+
+}

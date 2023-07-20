@@ -1,0 +1,103 @@
+
+body{
+    font-family: 'Aoboshi One', serif;
+    text-transform:capitalize ;
+    background-image: url(we7.jpg );
+    margin:0;
+    padding: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+ width:100%;
+ max-width: 540px;
+margin:10px auto 10px ;
+background:transparent;
+padding: 10px 15px ;
+border-radius:10px;
+
+}
+
+h1{
+    margin: 20px 20px;
+    display:flex;
+   
+    padding: 10px 10px 10px;
+  
+    font-size: 25px;
+    align-items:center;
+    background-color: rgb(90, 8, 8); 
+    color: beige;
+    justify-content: space-between;
+    flex:1;
+    border-radius:5px;
+    outline: none;
+}
+#head{
+    border:none;
+    outline: none;
+    text-decoration: none;
+    display:inline;
+    color: rgb(255, 255, 255);
+    padding: .5em;
+    border-radius: 5px;
+   background-color: brown;
+   
+}
+ul{
+    padding: 5px;
+    padding-top: 0%;
+}
+
+li { background: rgb(248, 245, 245); }
+li:nth-child(odd) { background:linear-gradient(100deg, rgb(202, 120, 120),beige); }
+
+ul li{
+    align-content: center;  
+    border-radius:5px;
+    color: rgb(16, 7, 7);
+   padding: 5px 10px;
+   list-style: none;
+   margin: 5px;
+}
+
+li a{
+    display:block;
+    text-decoration: none;
+    font-size: 22px;
+    text-transform: capitalize;
+    font-weight: bold;
+    color:black;
+    border-radius: 2px;
+    padding: 10px;
+
+}
+#usermsg{
+ font-family:'Fasthand', cursive;;
+    font-size: 80px;
+    display: block;
+    margin: 20px;
+    
+    font-weight: bold;
+    color:hwb(0 0% 100%);
+    
+    border-radius: 20%;
+}
+#msg2{
+    font-size: 40px;
+}
+#logout a{
+    box-sizing: content-box;
+    border:none;
+    outline: none;
+    text-decoration: none;
+    color: rgb(255, 253, 253);
+    padding: 8px;
+    border-radius: 20%;
+   color:rgb(155, 51, 51);
+   cursor: pointer;
+       
+}
+

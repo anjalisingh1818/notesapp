@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href= "/public/assets/style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Cherry+Bomb+One&family=Fasthand&display=swap" rel="stylesheet">
+    <title>ALL PRODUCTS</title>
+</head>
+
+<body>
+    <div  id="logout" align="right"><a href="/" >logout</a></div>
+    <div class="container">
+    <h1 >NOTES!
+    <a href="/user/<%=userid%>/notes/new" id="head">Add new note</a></h1><br>
+    <% if(User.note.length===0){ %>
+       <p id="usermsg" align="center">
+       hey!<br>
+         <%=User.name%> <br>
+       <span id="msg2"> Write your notes &#128390;</span>
+        </p>
+        <% } %>
+    <div id="list">
+    <ul>
+        <% for(let n of User.note){%>  
+                  <li><a href="notes/<%= n.id %>"><%= n.title %>
+                </a>
+          
+            </li>       
+       <% }%>
+    </ul>
+   </div>
+</div>
+
+</body>
+</html>
