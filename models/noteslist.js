@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+const mongoose=require('mongodb')
 const {Schema}=mongoose
 const notesSchema=new Schema({
     title:{

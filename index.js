@@ -6,7 +6,7 @@ const express=require('express')
 const app=express();
 const methodOverride=require('method-override')
 const path=require('path')
-const mongoose=require('mongoose')
+const mongoose=require('mongodb')
 const session=require('express-session')
 const flash=require('connect-flash')
 const expresserror=require('./utilities/expresserror')
@@ -21,7 +21,6 @@ mongoose.connect(DA,{
     useUnifiedTopology:true,
 })
 .then(()=>{
-    const x="connected"
     console.log(" MONOGO Connection opened")
 })
 .catch((e)=>{
@@ -55,7 +54,7 @@ app.set('view engine','ejs')
 
 
 app.get("/",(req,res)=>{
-    res.render('register/home',{x})
+    res.render('register/home')
 })
 const requireLogin = (req, res, next) => {
     if (!req.session.user_id) {
