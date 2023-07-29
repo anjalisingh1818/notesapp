@@ -1,4 +1,6 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 const express=require('express')
 const app=express();
 const methodOverride=require('method-override')
@@ -7,26 +9,35 @@ const mongoose=require('mongoose')
 const session=require('express-session')
 const flash=require('connect-flash')
 const expresserror=require('./utilities/expresserror')
-const joi=require('joi')
-const bcrypt = require('bcrypt');
 const notes=require('./routes/notes.js')
 const reg=require('./routes/reg.js')
 const login=require('./routes/login.js')
 const PORT=process.env.PORT||2000
 const DA=process.env.DB_URL
-mongoose.set('strictQuery', true);
-await mongoose.createConnection(DA,{
-    useNewUrlParser:true,
 
-    useUnifiedTopology:true,
+const MongoDBStore = require("connect-mongo")(session);
+ mongoose.connect(DA,{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+   
 })
-.then(()=>{
-    console.log(" MONOGO Connection opened")
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
+const store = new MongoDBStore({
+    url: DA,
+    secret:process.env.SECRET,
+    touchAfter: 24 * 60 * 60
+});
+
+store.on("error", function (e) {
+    console.log("SESSION STORE ERROR", e)
 })
-.catch((e)=>{
-    console.log(e)
-    console.log("Oh no ! Error occured")
-})
+
 const sessionConfig={
     name:process.env.NAME,
     secret:process.env.SECRET,
