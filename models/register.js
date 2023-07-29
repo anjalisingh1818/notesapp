@@ -4,10 +4,10 @@ const {Schema}=mongoose
 const registerSchema=new Schema({
     email:{
         type:String,
-        require:true
+        required:true
     },password:{
         type:String,
-        require:true
+        required:true
     },
     name:{
         type:String
@@ -21,9 +21,9 @@ const registerSchema=new Schema({
 
 })
 registerSchema.statics.findByUsernameAndValidate=async function(email,password){
-    const user=await this.findOne({email})
+    const user=await this.findOne({email});
   const isValid=  await bcrypt.compare(password,user.password)
-  return isValid?user:false
+  return isValid?user:false;
 }
 registerSchema.pre('save',async function(next){
     if(!this.isModified('password')) return next()
