@@ -17,7 +17,7 @@ router.get('',(req,res)=>{
     res.render('register/reg',{ exists:false})
 })
 
-router.post("",catchAsync(async(req,res,next)=>{
+router.post('',catchAsync(async(req,res,next)=>{
   
 //    const {error,value} =registerSchema.validate(req.body)
 //    if(error){
