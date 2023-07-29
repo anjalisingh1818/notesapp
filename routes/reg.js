@@ -18,9 +18,13 @@ router.get('',(req,res)=>{
 })
 
 router.post("",catchAsync(async(req,res,next)=>{
-    try{
+  
    const {error,value} =registerSchema.validate(req.body)
+   if(error){
+    throw new expresserror(msg,400)
+  }else{
     const checkUser=await Register.findOne({email:req.body.email})
+    try{
     if(!checkUser){
     const newUser=new Register(req.body)
     await newUser.save()
@@ -31,9 +35,11 @@ router.post("",catchAsync(async(req,res,next)=>{
     {
         res.render('register/reg',{exists:true})
     }
-}catch(e){
+}
+catch(e){
     req.flash('error','Provide Valid Information!! ')
     res.redirect('/register')
 }
+  }
 }))
 module.exports=router
