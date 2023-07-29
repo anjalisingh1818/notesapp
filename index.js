@@ -16,9 +16,8 @@ const login=require('./routes/login.js')
 const PORT=process.env.PORT||2000
 const DA=process.env.DB_URL
 mongoose.set('strictQuery', true);
- mongoose.connect(DA,{
+mongoose.connect(DA,{
     useNewUrlParser:true,
-
     useUnifiedTopology:true,
 })
 .then(()=>{
