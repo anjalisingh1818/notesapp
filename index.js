@@ -21,6 +21,7 @@ mongoose.connect(DA,{
     useUnifiedTopology:true,
 })
 .then(()=>{
+    const x="connected"
     console.log(" MONOGO Connection opened")
 })
 .catch((e)=>{
@@ -54,7 +55,7 @@ app.set('view engine','ejs')
 
 
 app.get("/",(req,res)=>{
-    res.render('register/home')
+    res.render('register/home',{x})
 })
 const requireLogin = (req, res, next) => {
     if (!req.session.user_id) {
