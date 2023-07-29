@@ -17,15 +17,14 @@ margin:10px auto 10px ;
 background:transparent;
 padding: 10px 15px ;
 border-radius:10px;
-
+margin-top:0px;
+padding-top:0px
 }
 
 h1{
     margin: 20px 20px;
     display:flex;
-   
     padding: 10px 10px 10px;
-  
     font-size: 25px;
     align-items:center;
     background-color: rgb(90, 8, 8); 
@@ -101,3 +100,21 @@ li a{
        
 }
 
+#success{
+
+    font-size: 15px;
+    background-color: rgb(75, 214, 119);
+    color: white;
+    width:500px;
+    border-radius:5%;
+   
+}
+#error{
+
+    font-size: 15px;
+    background-color: rgb(214, 75, 75);
+    color: white;
+    width:500px;
+    border-radius:5%;
+   
+}

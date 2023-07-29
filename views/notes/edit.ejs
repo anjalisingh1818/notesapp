@@ -18,7 +18,10 @@
     <title>Edit Notes</title>
 </head>
 <body>
-   
+    <center>
+        <div id="success"> <%=success%></div>
+        <script type="text/javascript">window.setTimeout("document.getElementById('success').style.display='none';",2000)</script>
+        </center>
     <form action="/user/<%=id%>/notes/<%=editnotes._id%>?_method=PUT" method="post">
         <h1 id="head">Edit Notes:  <%=editnotes.title%> <a href="/user/<%=id%>/notes">Home</a></h1>
   

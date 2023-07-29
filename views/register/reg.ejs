@@ -16,6 +16,11 @@
 </head>
 <body>
 <center>
+    <center>
+        <div id="error"><%=error%></div>
+        <script type="text/javascript">window.setTimeout("document.getElementById('success').style.display='none';",2000)</script>
+        <script type="text/javascript">window.setTimeout("document.getElementById('error').style.display='none';",2000)</script>
+    </center>
     <h1>REGISTER</h1>
     <form action="/register" method="post">
         <div id="btn" align="left" style="padding-top:5%;">
@@ -30,7 +35,6 @@
             <% if(exists){%>
                 <h5 >email already exists! try login</h5>
                 <% } %>
-           
         </div>
     </form>
 </center>

@@ -11,6 +11,13 @@
 </head>
 
 <body>
+  <center>
+    <div id="success"> <%=success%>
+    </div>
+    <div id="error"><%=error%></div>
+    <script type="text/javascript">window.setTimeout("document.getElementById('error').style.display='none';",2000)</script>
+    <script type="text/javascript">window.setTimeout("document.getElementById('success').style.display='none';",2000)</script>
+    </center>
     <div  id="logout" align="right"><a href="/" >logout</a></div>
     <div class="container">
     <h1 >NOTES!
@@ -18,7 +25,6 @@
     <% if(User.note.length===0){ %>
        <p id="usermsg" align="center">
        hey!<br>
-         <%=User.name%> <br>
        <span id="msg2"> Write your notes &#128390;</span>
         </p>
         <% } %>

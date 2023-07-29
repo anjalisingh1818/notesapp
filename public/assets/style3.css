@@ -57,3 +57,12 @@ a{
     justify-content:space-around;
 
 }
+#success{
+
+    font-size: 15px;
+    background-color: rgb(75, 214, 119);
+    color: white;
+    width:500px;
+    border-radius:5%;
+   
+}

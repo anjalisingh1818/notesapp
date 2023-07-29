@@ -104,3 +104,12 @@ h5{
     color: red;
   text-align: center;
 }
+#error{
+
+    font-size: 15px;
+    background-color: rgb(214, 75, 75);
+    color: white;
+    width:500px;
+    border-radius:5%;
+   
+}

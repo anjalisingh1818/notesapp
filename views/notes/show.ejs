@@ -9,9 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Cherry+Bomb+One&family=Fasthand&display=swap" rel="stylesheet">
     <title><%=notes.title%></title>
 </head>
-<body>
-   
-    
+<body><center>
+    <div id="success"> <%=success%>
+
+    </div>
+    <script type="text/javascript">window.setTimeout("document.getElementById('error').style.display='none';",2000)</script>
+    <script type="text/javascript">window.setTimeout("document.getElementById('success').style.display='none';",2000)</script>
+    </center>
     <h1><span id="notee"><%= notes.title%></span>
         <span id="stitle">
             <a href="/user/<%=userid%>/notes" id="home">Home</a>
