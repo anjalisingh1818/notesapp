@@ -1,4 +1,4 @@
-const mongoose=require('mongodb')
+const mongoose=require('mongoose')
 const bcrypt=require('bcrypt')
 const {Schema}=mongoose
 const registerSchema=new Schema({

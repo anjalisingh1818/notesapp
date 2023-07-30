@@ -6,8 +6,9 @@ const express=require('express')
 const app=express();
 const methodOverride=require('method-override')
 const path=require('path')
-const mongoose=require('mongodb')
-const session=require('express-session')
+const mongoose=require('mongoose')
+const session = require('express-session') 
+// const session=require('express-session')
 const flash=require('connect-flash')
 const expresserror=require('./utilities/expresserror')
 const notes=require('./routes/notes.js')
@@ -16,28 +17,42 @@ const login=require('./routes/login.js')
 const PORT=process.env.PORT||2000
 const DA=process.env.DB_URL
 mongoose.set('strictQuery', true);
+const MongoDBStore = require("connect-mongo")
+
 mongoose.connect(DA,{
     useNewUrlParser:true,
+
     useUnifiedTopology:true,
+
 })
-.then(()=>{
-    console.log(" MONOGO Connection opened")
-})
-.catch((e)=>{
-    console.log(e)
-    console.log("Oh no ! Error occured")
-})
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+    console.log("Database connected");
+});
+// const store =MongoDBStore.create({
+//    mongourl: DA,
+//     secret:process.env.SECRET,
+   
+// });
+// store.on("error", function (e) {
+//     console.log("SESSION STORE ERROR", e)
+// })
 const sessionConfig={
+    store:MongoDBStore.create({mongoUrl:DA}),
     name:process.env.NAME,
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
         httpOnly:true,
-        expires:Date.now()+1000*60*60*24*7,
-        maxAge:1000*60*60*24*7,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+       
     }
 }
+
 app.use(session(sessionConfig))
 app.use(flash())
 
@@ -52,16 +67,16 @@ app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname,'public')))
 app.set('view engine','ejs')
 
-
-app.get("/",(req,res)=>{
-    res.render('register/home')
-})
 const requireLogin = (req, res, next) => {
     if (!req.session.user_id) {
         return res.redirect('/login')
     }
     next();
 }
+app.get("/",(req,res)=>{
+    res.render('register/home')
+})
+
     
 app.use('/user',notes)
 app.use('/register',reg)
