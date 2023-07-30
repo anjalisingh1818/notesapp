@@ -20,11 +20,13 @@ router.get('',(req,res)=>{
 router.post('',async(req,res,next)=>{
    const {error,value} =registerSchema.validate(req.body)
     if(error){
-    throw new expresserror('Error Found',400)
+        req.flash('error','Provide Valid Information!! ')
+        res.redirect('/register')
+    // throw new expresserror('Error Found',400)
     }
     else{
-    const checkUser=await Register.findOne({email:req.body.email})
     try{
+    const checkUser=await Register.findOne({email:req.body.email})
     if(!checkUser){
     const newUser=new Register(req.body)
     await newUser.save()
