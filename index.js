@@ -30,14 +30,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
     console.log("Database connected");
 });
-// const store =MongoDBStore.create({
-//    mongourl: DA,
-//     secret:process.env.SECRET,
-   
-// });
-// store.on("error", function (e) {
-//     console.log("SESSION STORE ERROR", e)
-// })
+
 const sessionConfig={
     store:MongoDBStore.create({mongoUrl:DA}),
     name:process.env.NAME,
@@ -46,7 +39,7 @@ const sessionConfig={
     saveUninitialized:true,
     cookie:{
         httpOnly:true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
        
@@ -86,9 +79,9 @@ app.all("*",(req,res,next)=>{
     next(new expresserror('Page Not Found',404))
    })
 app.use((err,req,res,next)=>{
-    
-    const {statusCode=500,message}=err
+const {statusCode=500,message}=err
     if(!err.message) err="something went wrong"
+    console.log(err)
    res.status(statusCode).render("notes/error",{err})
 })
 app.post('/logout',(req,res)=>{

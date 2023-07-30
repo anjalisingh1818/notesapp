@@ -19,9 +19,10 @@ router.get('',(req,res)=>{
     res.render('register/login',{isValid:false})
    })
  router.post('',catchAsync(async(req,res)=>{
-    try{
+    
     const {email,password}=req.body
    const checkUser=await Register.findByUsernameAndValidate(email,password)
+   try{
     if(checkUser)
  {  req.session.user_id=checkUser._id
     req.flash('success','Successfully logged in !!')
