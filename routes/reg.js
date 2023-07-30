@@ -17,30 +17,29 @@ router.get('',(req,res)=>{
     res.render('register/reg',{ exists:false})
 })
 
-router.post('',catchAsync(async(req,res,next)=>{
-  
-//    const {error,value} =registerSchema.validate(req.body)
-//    if(error){
-//     throw new expresserror('Error Found',400)
-//   }
-//   else{
-//     const checkUser=await Register.findOne({email:req.body.email})
-//     try{
-//     if(!checkUser){
+router.post('',async(req,res,next)=>{
+   const {error,value} =registerSchema.validate(req.body)
+    if(error){
+    throw new expresserror('Error Found',400)
+    }
+    else{
+    const checkUser=await Register.findOne({email:req.body.email})
+    try{
+    if(!checkUser){
     const newUser=new Register(req.body)
     await newUser.save()
     req.flash('success','Successfully registered ')
     res.redirect(`/user/${newUser.id}/notes`)
-    // }
-//     else
-//     {
-//         res.render('register/reg',{exists:true})
-//     }
-
-// catch(e){
-//     req.flash('error','Provide Valid Information!! ')
-//     res.redirect('/register')
-// }
-//   }
-}))
+    }
+    else
+    {
+        res.render('register/reg',{exists:true})
+    }
+    }
+catch(e){
+    req.flash('error','Provide Valid Information!! ')
+    res.redirect('/register')
+}
+  }
+})
 module.exports=router
