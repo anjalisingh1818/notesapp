@@ -50,10 +50,10 @@ ul{
     padding-top: 0%;
 }
 
-li { background: rgb(248, 245, 245); }
-li:nth-child(odd) { background:linear-gradient(100deg, rgb(202, 120, 120),beige); }
+#list li { background: rgb(248, 245, 245); }
+#list li:nth-child(odd) { background:linear-gradient(100deg, rgb(202, 120, 120),beige); }
 
-ul li{
+#list li{
     align-content: center;  
     border-radius:5px;
     color: rgb(16, 7, 7);
@@ -62,7 +62,7 @@ ul li{
    margin: 5px;
 }
 
-li a{
+#list a{
     display:block;
     text-decoration: none;
     font-size: 22px;
@@ -78,27 +78,14 @@ li a{
     font-size: 80px;
     display: block;
     margin: 20px;
-    
     font-weight: bold;
     color:hwb(0 0% 100%);
-    
     border-radius: 20%;
 }
 #msg2{
     font-size: 40px;
 }
-#logout a{
-    box-sizing: content-box;
-    border:none;
-    outline: none;
-    text-decoration: none;
-    color: rgb(255, 253, 253);
-    padding: 8px;
-    border-radius: 20%;
-   color:rgb(155, 51, 51);
-   cursor: pointer;
-       
-}
+
 
 #success{
 
@@ -118,3 +105,119 @@ li a{
     border-radius:5%;
    
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+  }
+  
+  #menu {
+    z-index: 2;
+  }
+  
+  #menu-bar {
+    width: 45px;
+    height: 40px;
+    margin: 30px 0 20px 20px;
+    cursor: pointer;
+  }
+  
+  .bar {
+    height: 5px;
+    width: 100%;
+    background-color: #DC052D;
+    display: block;
+    border-radius: 5px;
+    transition: 0.3s ease;
+  }
+  
+  #bar1 {
+    transform: translateY(-4px);
+  }
+  
+  #bar3 {
+    transform: translateY(4px);
+  }
+  
+  .nav {
+    transition: 0.3s ease;
+    display: none;
+  }
+  
+  .nav ul {
+    padding: 0 22px;
+  }
+  
+  .nav li {
+    list-style: none;
+    padding: 12px 0;
+  }
+  
+  .nav li a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  
+  .nav li a:hover {
+    font-weight: bold;
+  }
+  
+  .menu-bg, #menu {
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  
+  .menu-bg {
+    z-index: 1;
+    width: 0;
+    height: 0;
+    margin: 30px 0 20px 20px;
+    background: radial-gradient(circle, #DC052D, #DC052D);
+    border-radius: 50%;
+    transition: 0.3s ease;
+  }
+  
+  .change {
+    display: block;
+  }
+  
+  .change .bar {
+    background-color: rgb(67, 7, 3);
+  }
+  
+  .change #bar1 {
+    transform: translateY(4px) rotateZ(-45deg);
+  }
+  
+  .change #bar2 {
+    opacity: 0;
+  }
+  
+  .change #bar3 {
+    transform: translateY(-6px) rotateZ(45deg);
+  }
+  
+  .change-bg {
+    width: 520px;
+    height: 460px;
+    transform: translate(-60%,-30%);
+  }
+  .delo{
+   
+    border-radius: 5px;
+     background:linear-gradient(100deg, rgb(144, 31, 23),rgb(177, 73, 68)); 
+   
+  }
+.delo a,button{
+    display: block;
+    all:unset;
+    border:none;
+    outline: none;
+    text-decoration: none;
+    color:white;
+    padding: auto 2px;
+    cursor: pointer;
+
+    }

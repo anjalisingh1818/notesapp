@@ -19,24 +19,26 @@ router.get('',(req,res)=>{
     res.render('register/login',{isValid:false})
    })
  router.post('',catchAsync(async(req,res)=>{
-    
     const {email,password}=req.body
-   const checkUser=await Register.findByUsernameAndValidate(email,password)
-   try{
+    try{
+    const checkUser=await Register.findByUsernameAndValidate(email,password)
     if(checkUser)
- {  req.session.user_id=checkUser._id
+    { 
+    req.session.user_id=checkUser._id
     req.flash('success','Successfully logged in !!')
     res.redirect(`/user/${checkUser.id}/notes`)
- }
-else{
+    }
+    else{
+    console.log('error')
     req.flash('error','INVALID CREDENTIALS')
     res.redirect('/login')
-}
-}
-catch(e){
+    }
+    }
+    catch(e){
+    console.log('error')
     req.flash('error','INVALID CREDENTIALS')
     res.redirect('/login')
-}
+    }
 }))
 
 

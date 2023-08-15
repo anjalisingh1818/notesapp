@@ -21,7 +21,7 @@ const registerSchema=new Schema({
 
 })
 registerSchema.statics.findByUsernameAndValidate=async function(email,password){
-    const user=await this.findOne({email});
+  const user=await this.findOne({email});
   const isValid=  await bcrypt.compare(password,user.password)
   return isValid?user:false;
 }

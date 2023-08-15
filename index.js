@@ -8,13 +8,15 @@ const methodOverride=require('method-override')
 const path=require('path')
 const mongoose=require('mongoose')
 const session = require('express-session') 
-// const session=require('express-session')
 const flash=require('connect-flash')
 const expresserror=require('./utilities/expresserror')
 const notes=require('./routes/notes.js')
+const Register=require('./models/register')
+const Notes=require('./models/noteslist')
 const reg=require('./routes/reg.js')
+const catchAsync=require('./utilities/catchAsync')
 const login=require('./routes/login.js')
-const PORT=process.env.PORT||2000
+const PORT=process.env.PORT||8000
 const DA=process.env.DB_URL
 mongoose.set('strictQuery', true);
 const MongoDBStore = require("connect-mongo")
@@ -69,25 +71,29 @@ const requireLogin = (req, res, next) => {
 app.get("/",(req,res)=>{
     res.render('register/home')
 })
-
-    
 app.use('/user',notes)
 app.use('/register',reg)
 app.use('/login',login)
 
-app.all("*",(req,res,next)=>{
-    next(new expresserror('Page Not Found',404))
-   })
-app.use((err,req,res,next)=>{
-const {statusCode=500,message}=err
-    if(!err.message) err="something went wrong"
-    console.log(err)
-   res.status(statusCode).render("notes/error",{err})
-})
 app.post('/logout',(req,res)=>{
     req.session.destroy()
     res.redirect('/login')
 })
+app.delete('/user/:id',catchAsync(async(req,res)=>{
+    console.log('hi')
+    const { id } = req.params;
+    await Register.findByIdAndDelete(id);
+    res.redirect('/')
+}))
+app.all("*",(req,res,next)=>{
+    next(new expresserror('Page Note Found',404))
+   })
+app.use((err,req,res,next)=>{
+    const {statusCode=500,message}=err
+        if(!err.message) err="something went wrong"
+        console.log(err)
+       res.status(statusCode).render("notes/error",{err})
+    })
 app.listen(PORT,()=>{
-    console.log("listening")
+    console.log(`listening at ${PORT}`)
 })

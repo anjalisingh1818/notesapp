@@ -18,9 +18,32 @@
     <script type="text/javascript">window.setTimeout("document.getElementById('error').style.display='none';",2000)</script>
     <script type="text/javascript">window.setTimeout("document.getElementById('success').style.display='none';",2000)</script>
     </center>
-    <div  id="logout" align="right"><a href="/" >logout</a></div>
+    <div id="menu">
+      <div id="menu-bar" onclick="menuOnClick()">
+        <div id="bar1" class="bar"></div>
+        <div id="bar2" class="bar"></div>
+        <div id="bar3" class="bar"></div>
+      </div>
+      <nav class="nav" id="nav">
+        <ul class="delo">
+          <li class="del"><a href="/" >logout</a></li>
+          <li class="del"><a><form action="/user/<%=userid%>?_method=DELETE" method="post">
+            <button id="delete" align="right">Delete Account</button>
+          </form></a></li>
+      
+        </ul>
+      </nav> 
+    </div>
+    <script>
+      function menuOnClick() {
+  document.getElementById("menu-bar").classList.toggle("change");
+  document.getElementById("nav").classList.toggle("change");
+  document.getElementById("menu-bg").classList.toggle("change-bg");
+}
+    </script>
+    
     <div class="container">
-    <h1 >NOTES!
+    <h1 >NOTESNOOK
     <a href="/user/<%=userid%>/notes/new" id="head">Add new note</a></h1><br>
     <% if(User.note.length===0){ %>
        <p id="usermsg" align="center">
@@ -28,8 +51,8 @@
        <span id="msg2"> Write your notes &#128390;</span>
         </p>
         <% } %>
-    <div id="list">
-    <ul>
+    <div >
+    <ul id="list">
         <% for(let n of User.note){%>  
                   <li><a href="notes/<%= n.id %>"><%= n.title %>
                 </a>

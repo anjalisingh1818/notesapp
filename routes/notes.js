@@ -31,17 +31,17 @@ router.get('/:id/notes',catchAsync(async(req,res)=>{
     const newnote = new Notes(req.body);
     const {error,value} =notesSchema.validate(req.body)
     if(error){
-     
      next(new expresserror('Bad Request',400))
     }
     if(newnote){
-     req.flash('success','successfully made a new note')
+    req.flash('success','successfully made a new note')
     user.note.push(newnote);
     await newnote.save();
     await user.save();
     res.redirect(`/user/${user._id}/notes/${newnote.id}`)
     }
-    else{
+    else
+    {
         next(new expresserror('INVALID',400))
     }
     }))
@@ -70,7 +70,6 @@ router.get('/:id/notes',catchAsync(async(req,res)=>{
         const { id, noteid } = req.params;
         await Register.findByIdAndUpdate(id, { $pull: { note: noteid } });
         await Notes.findByIdAndDelete(noteid);
-       
         res.redirect(`/user/${id}/notes`)
     }))
     module.exports=router
